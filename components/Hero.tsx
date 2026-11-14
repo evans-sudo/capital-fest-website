@@ -6,7 +6,7 @@ import { BrandMark } from './BrandMark';
 
 export function Hero({ onTickets }: { onTickets: () => void }) {
   return <section id="home" className="hero" aria-label="Capital Fest introduction">
-    {siteConfig.heroVideo ? <video className="hero__media" autoPlay loop muted playsInline poster={heroPhoto.src} aria-hidden="true"><source src={siteConfig.heroVideo} type="video/mp4"/></video> : <Image src={heroPhoto.src} alt="Capital Fest live performance with a full crowd and stage effects" fill sizes="100vw" priority quality={90} className="hero__media"/>}
+    {siteConfig.heroVideo ? <video className="hero__media" autoPlay loop muted playsInline poster={heroPhoto.src} aria-hidden="true"><source src={siteConfig.heroVideo} type="video/mp4"/></video> : <Image src={heroPhoto.src} alt="Capital Fest live performance with a full crowd and stage effects" fill sizes="100vw" priority unoptimized className="hero__media"/>}
     <div className="hero__wash"/>
     <div className="hero__inner">
       <span className="hero__pill"><span className="live-dot"/> FEEL THE ENERGY</span>

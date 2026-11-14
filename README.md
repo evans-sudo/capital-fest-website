@@ -34,7 +34,7 @@ npm run dev
 Visit **http://localhost:3000**. Build production artifacts with:
 
 ```bash
-npm run build
+npm run build:next
 npm start
 ```
 
@@ -46,10 +46,10 @@ The repository includes the OpenNext adapter and Wrangler configuration. In Clou
 
 | Setting | Value |
 | --- | --- |
-| Build command | `npm run build:cloudflare` |
+| Build command | `npm run build` |
 | Deploy command | `npx wrangler deploy` |
 
-`npm run build` only creates Next.js output; `npm run build:cloudflare` creates the `.open-next/worker.js` bundle that Wrangler deploys. For a local authenticated deployment, run `npm run deploy`. Configure `NEWSLETTER_WEBHOOK_URL` and `NEWSLETTER_API_TOKEN` as Cloudflare Worker secrets when newsletter signups are ready.
+`npm run build` creates the `.open-next/worker.js` bundle and compiled OpenNext config that Wrangler deploys. `npm run build:cloudflare` is an alias for the same build. The adapter invokes `npm run build:next` internally to build Next.js without recursion. For a local authenticated deployment, run `npm run deploy`. Configure `NEWSLETTER_WEBHOOK_URL` and `NEWSLETTER_API_TOKEN` as Cloudflare Worker secrets when newsletter signups are ready.
 
 ## View the immediate visual preview
 

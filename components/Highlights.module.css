@@ -1,0 +1,31 @@
+.toolbar {
+  flex-wrap: wrap;
+  row-gap: 16px;
+}
+
+.track {
+  scroll-padding-inline: clamp(25px, 5.5vw, 104px);
+}
+
+@media (max-width: 600px) {
+  .track {
+    scroll-padding-inline: 23px;
+  }
+
+  .toolbar > span {
+    max-width: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .toolbar > span {
+    flex-basis: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

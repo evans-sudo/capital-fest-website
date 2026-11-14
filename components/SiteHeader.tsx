@@ -15,8 +15,17 @@ const nav = [
 export function SiteHeader({ onTickets }: { onTickets: () => void }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 50);
+    let previousY = window.scrollY;
+    const handler = () => {
+      const y = Math.max(0, window.scrollY);
+      setScrolled(y > 50);
+      if (Math.abs(y - previousY) > 3 || y <= 100) {
+        setHidden(y > 100 && y > previousY);
+        previousY = y;
+      }
+    };
     handler();
     window.addEventListener('scroll', handler, { passive: true });
     return () => window.removeEventListener('scroll', handler);
@@ -30,7 +39,7 @@ export function SiteHeader({ onTickets }: { onTickets: () => void }) {
     return () => { window.removeEventListener('keydown', key); document.body.style.overflow = old; };
   }, [open]);
   return <>
-    <header className={`site-header ${scrolled || open ? 'site-header--solid' : ''}`}>
+    <header className={`site-header ${scrolled || open ? 'site-header--solid' : ''} ${hidden && !open ? 'site-header--hidden' : ''}`} onFocusCapture={() => setHidden(false)}>
       <Link href="#home" className="header-brand" aria-label="Capital Fest home" onClick={() => setOpen(false)}><BrandMark /></Link>
       <nav className="desktop-nav" aria-label="Main navigation">
         {nav.map((n) => <a key={n.href} href={n.href}>{n.label}</a>)}
@@ -39,7 +48,7 @@ export function SiteHeader({ onTickets }: { onTickets: () => void }) {
       <button type="button" className="menu-toggle" aria-label={open ? 'Close menu' : 'Open menu'} aria-expanded={open} aria-controls="mobile-navigation" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
     </header>
     <div className={`mobile-nav-panel ${open ? 'mobile-nav-panel--open' : ''}`} id="mobile-navigation" aria-hidden={!open}>
-      <nav aria-label="Mobile navigation">{nav.map((n, i) => <a key={n.href} href={n.href} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1}><span>0{i + 1}</span>{n.label}<ArrowUpRight size={20}/></a>)}</nav>
+      <nav aria-label="Mobile navigation">{nav.map((n, i) => <a key={n.href} href={n.href} onClick={() => setOpen(false)} tabIndex={open ? 0 : -1} style={{ transitionDelay: open ? `${0.12 + i * 0.06}s` : '0s' }}><span>0{i + 1}</span>{n.label}<ArrowUpRight size={20}/></a>)}</nav>
       <button type="button" tabIndex={open ? 0 : -1} className="mobile-nav-ticket" onClick={() => { setOpen(false); onTickets(); }}>TICKETS <ArrowUpRight size={24}/></button>
       <div className="mobile-nav-bottom">MUSIC. CULTURE. COMMUNITY.</div>
     </div>

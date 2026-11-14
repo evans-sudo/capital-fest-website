@@ -11,11 +11,13 @@ import { FeaturedPhoto } from '@/components/FeaturedPhoto';
 import { Newsletter } from '@/components/Newsletter';
 import { Footer } from '@/components/Footer';
 import { TicketPanel } from '@/components/TicketPanel';
+import { PageIntro } from '@/components/PageIntro';
 
 export default function HomePage() {
   const [ticketsOpen, setTicketsOpen] = useState(false);
   const openTickets = () => setTicketsOpen(true);
   return <main>
+    <PageIntro/>
     <SiteHeader onTickets={openTickets}/>
     <Hero onTickets={openTickets}/>
     <SymbolStrip/>

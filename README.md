@@ -1,25 +1,26 @@
 # Capital Fest — festival website
 
-A responsive, component-based Capital Fest frontend, reconstructed from the **public content structure of https://elitefestival.org/** and **21 unique Capital Fest photographs provided by the client**.
+A responsive, component-based Capital Fest frontend, reconstructed from the **public content structure of https://elitefestival.org/** and **30 Capital Fest photographs provided by the client**.
 
-**Scope:** This is a working first implementation / visual baseline, **not a verified pixel-perfect capture** of the reference. The source website's computed CSS, live animations, exact fonts, and detailed interactions were not available for comparison in a graphical browser. Accordingly, styling and interaction details have been approximated around the validated section order rather than falsely presented as a 1:1 source-code copy.
+**Current edit:** Uses the exact organizer-supplied transparent PNG, nine additional photos, and the supplied 17.4-second MP4. The reference's public animation source was inspected to reproduce its intro, hero reveal, navigation movement, 45-second symbol loops, 8.5-second gallery autoplay, 30-second text loops, and scroll reveals. Visual comparison in a graphical browser remains pending because browser access was unavailable in this session.
 
 ## What's included
 
 - Next.js App Router, React 19, TypeScript and Tailwind CSS setup
-- Motion for React for an on-scroll reveal (most ticker animations are CSS)
-- Full-screen concert hero with optional MP4, photographic fallback, brand overlay and scroll control
+- Motion for React scroll reveals with reduced-motion support; CSS intro, navigation and ticker animations
+- Concert hero with supplied MP4 playing automatically, muted and looping, with photographic fallback and official logo; no video controls are displayed
 - Two animated geometric symbol strips
 - Large event announcement and a **temporary, clearly non-official flyer composition**
 - Ticket entry CTA and keyboard-dismissable drawer, with link support once the actual ticket URL is known
 - Mobile menu, anchors and sticky navigation
-- Manual horizontal gallery with 21 optimized festival photos, keyboard scroll and arrows
+- Horizontal gallery with 30 optimized festival photos, arrows, keyboard scrolling, 8.5-second autoplay and play/pause; pauses on hover, focus, hidden tabs and offscreen
 - Dual-direction 'WHERE IT ALL BEGAN' marquees
 - Large featured photo and signup section
 - Newsletter API route that calls a **configurable, client-controlled webhook**, not one from the reference website
 - Separate `/privacy` and `/terms` placeholder pages awaiting client-approved legal documents
 - Offline HTML visual preview in `/preview/index.html`, which works without installing dependencies
-- 21 original JPEG files retained in `/assets/originals`; optimized WebP files in `/public/images`
+- Original JPEGs retained in `/assets/originals` (latest batch in `/november-2026`); optimized WebPs in `/public/images`
+- Official Instagram and YouTube account links connected; social icons without configured URLs stay hidden
 
 ## Run the Next.js project
 
@@ -68,23 +69,28 @@ Edit `lib/site-config.ts` to replace launch placeholders:
 
 | Field | Required for launch | Where used |
 |---|---|---|
-| `officialLogo` | Yes | All brand lockups |
-| `heroVideo` | Optional | Hero MP4; falls back to uploaded Capital Fest photo |
+| `officialLogo` | Supplied | Exact PNG used for all brand lockups |
+| `heroVideo` | Supplied | Automatic muted hero MP4; photographic fallback |
 | `officialFlyer` | Yes | The event poster section |
 | `eventDate`, `eventVenue` | If the festival is announced | Add approved text wherever needed |
 | `ticketUrl` | If ticketing is live | The ticket drawer CTA |
-| `instagramUrl`, `xUrl`, `email` | Recommended | Footer, contact |
+| `instagramUrl`, `youtubeUrl` | Supplied | Footer links to the official accounts |
+| `tiktokUrl`, `xUrl`, `facebookUrl`, `email` | Awaiting account URLs | Optional social links (hidden until configured) and contact |
 
 Example:
 
 ```ts
-officialLogo: '/branding/capital-fest-logo.svg',
+officialLogo: '/branding/capital-fest-logo.png',
 heroVideo: '/media/capital-fest-hero.mp4',
 officialFlyer: '/branding/capital-fest-official-flyer.webp',
 ticketUrl: 'https://your-confirmed-ticketing-url.example',
 ```
 
-Put authorized assets under `public/branding` and videos under `public/media` (create the latter folder if needed). The current **CSS brand lock-up is a temporary approximation**, based on the visible stage branding in the supplied photographs, **not an authentic logo file**. The current visual event poster is a composition using the supplied photos, **not the official event flyer**. We have intentionally *not* copied the Elite Festival trademark, official flyer, media, or legal text into Capital Fest's website.
+The supplied logo is stored unchanged at `public/branding/capital-fest-logo.png`; its transparent pixels display correctly over the page. The unchanged H.264/AAC portrait video is at `public/media/capital-fest-hero.mp4`. It fills the hero and plays automatically, muted and looping, with no play/pause button or film viewer. Playback stops for reduced-motion preferences, hidden tabs, and when the hero is offscreen.
+
+The official social links supplied by the organizer are [Instagram](https://www.instagram.com/capitalfest__/) and [YouTube](https://www.youtube.com/@CapitalFest). Both open in a new tab. Set additional confirmed account URLs in `lib/site-config.ts`; social icons without URLs stay hidden. No handles or destination links are invented.
+
+The event poster is still a composition using the supplied photos and official logo, pending the official flyer. Event details and ticket URLs remain unconfigured.
 
 The sample event copy is creative placeholder marketing text. No date, venue, performers, social handles, or ticket URL have been invented.
 
@@ -104,7 +110,7 @@ When no endpoint is configured the API returns **503 (signups not live)**, with 
 The routes `/privacy` and `/terms` are **clearly marked placeholders** and are not legal advice. Obtain final, organizer-approved legal notices before collecting real user details or publishing the site. The staging metadata sets `robots.index=false`: switch this to `true` only when ready for public indexing.
 
 Before launch:
-1. Obtain official brand mark, flyer, event date/venue, ticket URL and contact/social links.
+1. Add the official flyer, event date/venue, ticket URL, contact email and remaining social links.
 2. Confirm permission to use the supplied festival photographs and any other media.
 3. Integrate newsletter backend and approved privacy/terms pages; verify end-to-end.
 4. Validate navigation, ticket modal, mobile menu, form, gallery and reduced-motion behavior.
@@ -122,9 +128,11 @@ app/
   privacy/page.tsx         Legal placeholder
   terms/page.tsx           Legal placeholder
 components/
-  BrandMark.tsx            Replaceable CSS brand lockup
+  BrandMark.tsx            Exact organizer-supplied PNG
   SiteHeader.tsx           Desktop navigation + mobile menu
-  Hero.tsx                 Video or image hero
+  Hero.tsx                 Automatic muted video hero
+  PageIntro.tsx            Timed reference-style logo entrance
+  SocialLinks.tsx          Configurable platform links
   SymbolStrip.tsx          Decorative strips
   EventAnnouncement.tsx    Event poster + tickets CTA
   Highlights.tsx           Photo carousel
@@ -138,11 +146,11 @@ lib/
   site-config.ts           Centralized event and provider placeholders
   photos.ts                Hero/photo/gallery selection
   photo-manifest.json      All unique asset metadata
-public/images/             21 optimized festival photos
-assets/originals/          21 unmodified original photos
+public/images/             30 optimized festival photos
+assets/originals/          30 unmodified original photos
 preview/                   Standalone UI design demo
 ```
 
 ## Original reference vs reconstruction
 
-Verified content order from the public site: **hero video/overlay → two decorative symbol bands → event heading and flyer → ticket announcement → photo highlights → repeated 'WHERE IT ALL BEGAN' text → large featured photo → signup form → decorative footer/footer links**. The current replica preserves that visual narrative with Capital Fest branding and provided images. Unknown precise production details have been marked for a later visual comparison, not presented as observed fact.
+Verified content order from the public site: **hero video/overlay → two decorative symbol bands → event heading and flyer → ticket announcement → photo highlights → repeated 'WHERE IT ALL BEGAN' text → large featured photo → signup form → decorative footer/footer links**. The current replica preserves that visual narrative with Capital Fest branding and provided images. Animation timings were verified against the reference’s public JavaScript. A side-by-side rendered comparison is still pending.

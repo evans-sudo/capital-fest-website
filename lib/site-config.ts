@@ -12,7 +12,7 @@ export const siteConfig = {
   facebookUrl: null as string | null,
   youtubeUrl: 'https://www.youtube.com/@CapitalFest' as string | null,
   email: null as string | null,
-  heroVideo: '/media/capital-fest-hero.mp4' as string | null,
+  heroVideo: '/media/capital-fest-hero-v2.mp4' as string | null,
   officialFlyer: null as string | null, // Save an image in public/branding and set its URL
   officialLogo: '/branding/capital-fest-logo.png',
 } as const;

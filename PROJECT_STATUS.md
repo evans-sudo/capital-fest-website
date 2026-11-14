@@ -18,7 +18,7 @@
 ## Pending production materials
 - [x] Approved standalone Capital Fest logo integrated unchanged
 - [ ] Official Capital Fest flyer
-- [x] Supplied hero video integrated unchanged
+- [x] Latest supplied hero video (21.35.16) integrated unchanged
 - [ ] Confirmed event details and ticket purchase URL
 - [x] Official Instagram and YouTube account URLs connected
 - [ ] Contact email and remaining social links

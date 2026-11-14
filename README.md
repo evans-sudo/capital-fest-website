@@ -2,7 +2,7 @@
 
 A responsive, component-based Capital Fest frontend, reconstructed from the **public content structure of https://elitefestival.org/** and **30 Capital Fest photographs provided by the client**.
 
-**Current edit:** Uses the exact organizer-supplied transparent PNG, nine additional photos, and the supplied 17.4-second MP4. The reference's public animation source was inspected to reproduce its intro, hero reveal, navigation movement, 45-second symbol loops, 8.5-second gallery autoplay, 30-second text loops, and scroll reveals. Visual comparison in a graphical browser remains pending because browser access was unavailable in this session.
+**Current edit:** Uses the exact organizer-supplied transparent PNG, nine additional photos, and the latest supplied MP4. The reference's public animation source was inspected to reproduce its intro, hero reveal, navigation movement, 45-second symbol loops, 8.5-second gallery autoplay, 30-second text loops, and scroll reveals. Visual comparison in a graphical browser remains pending because browser access was unavailable in this session.
 
 ## What's included
 
@@ -81,12 +81,12 @@ Example:
 
 ```ts
 officialLogo: '/branding/capital-fest-logo.png',
-heroVideo: '/media/capital-fest-hero.mp4',
+heroVideo: '/media/capital-fest-hero-v2.mp4',
 officialFlyer: '/branding/capital-fest-official-flyer.webp',
 ticketUrl: 'https://your-confirmed-ticketing-url.example',
 ```
 
-The supplied logo is stored unchanged at `public/branding/capital-fest-logo.png`; its transparent pixels display correctly over the page. The unchanged H.264/AAC portrait video is at `public/media/capital-fest-hero.mp4`. It fills the hero and plays automatically, muted and looping, with no play/pause button or film viewer. Playback stops for reduced-motion preferences, hidden tabs, and when the hero is offscreen.
+The supplied logo is stored unchanged at `public/branding/capital-fest-logo.png`; its transparent pixels display correctly over the page. The latest supplied hero video is at `public/media/capital-fest-hero-v2.mp4`. It fills the hero and plays automatically, muted and looping, with no play/pause button or film viewer. Playback stops for reduced-motion preferences, hidden tabs, and when the hero is offscreen.
 
 The official social links supplied by the organizer are [Instagram](https://www.instagram.com/capitalfest__/) and [YouTube](https://www.youtube.com/@CapitalFest). Both open in a new tab. Set additional confirmed account URLs in `lib/site-config.ts`; social icons without URLs stay hidden. No handles or destination links are invented.
 

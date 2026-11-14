@@ -40,7 +40,16 @@ npm start
 
 TypeScript check: `npm run lint`.
 
-**Environment note:** The supplied code was authored and statically checked in a tool environment where the Next.js dependencies could not be downloaded, so a production `next build` could not be run here. Run `npm install && npm run build` in your development environment before release.
+## Deploy to Cloudflare Workers
+
+The repository includes the OpenNext adapter and Wrangler configuration. In Cloudflare Workers Builds, use:
+
+| Setting | Value |
+| --- | --- |
+| Build command | `npm run build:cloudflare` |
+| Deploy command | `npx wrangler deploy` |
+
+`npm run build` only creates Next.js output; `npm run build:cloudflare` creates the `.open-next/worker.js` bundle that Wrangler deploys. For a local authenticated deployment, run `npm run deploy`. Configure `NEWSLETTER_WEBHOOK_URL` and `NEWSLETTER_API_TOKEN` as Cloudflare Worker secrets when newsletter signups are ready.
 
 ## View the immediate visual preview
 

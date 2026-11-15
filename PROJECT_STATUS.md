@@ -5,7 +5,7 @@
 - [x] Capital Fest photography integrated (30 distinct images; latest nine uploads lead the gallery)
 - [x] Desktop and mobile navigation and ticket button
 - [x] Automatic muted looping video hero with poster fallback and no visible video controls
-- [x] Exact official transparent logo; event poster composition pending official flyer
+- [x] Exact official transparent logo and all four official artist flyers, linked to unchanged originals
 - [x] Two animated symbol strips
 - [x] Event intro and ticket-updates panel
 - [x] Highlights gallery with arrows, swipe, snapping, 8.5-second autoplay/pause and image descriptions
@@ -17,7 +17,7 @@
 
 ## Pending production materials
 - [x] Approved standalone Capital Fest logo integrated unchanged
-- [ ] Official Capital Fest flyer
+- [x] Official Capital Fest 3.0 flyers: Mayorkun, Kidd Carder, Danny S, Double Gee2x
 - [x] Latest supplied hero video (21.35.16) integrated unchanged
 - [ ] Confirmed event details and ticket purchase URL
 - [x] Official Instagram and YouTube account URLs connected

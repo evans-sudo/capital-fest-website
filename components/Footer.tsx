@@ -29,5 +29,6 @@ export function Footer({ onTickets }: { onTickets: () => void }) {
       </motion.div>
     </div>
     <motion.div data-scroll-reveal className="footer__bottom" variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: reduceMotion ? 0 : 0.4, delay: reduceMotion ? 0 : 0.65 } } }}><span>© {new Date().getFullYear()} CAPITAL FEST. ALL RIGHTS RESERVED.</span><span className="footer__bottom-links"><Link href="/privacy">PRIVACY</Link><Link href="/terms">TERMS</Link><a href="#home">BACK TO TOP ↑</a></span></motion.div>
+    <p className="footer__credit">powered by <span>truview</span></p>
   </motion.footer>;
 }

@@ -2,7 +2,7 @@
 
 A responsive, component-based Capital Fest frontend, reconstructed from the **public content structure of https://elitefestival.org/** and **30 Capital Fest photographs provided by the client**.
 
-**Current edit:** Uses the exact organizer-supplied transparent PNG, nine additional photos, and the latest supplied MP4. The reference's public animation source was inspected to reproduce its intro, hero reveal, navigation movement, 45-second symbol loops, 8.5-second gallery autoplay, 30-second text loops, and scroll reveals. Visual comparison in a graphical browser remains pending because browser access was unavailable in this session.
+**Current edit:** Uses the exact organizer-supplied transparent PNG, nine additional photos, the latest supplied MP4, and all four Capital Fest 3.0 artist flyers. Mayorkun headlines the event artwork, followed by Kidd Carder, Danny S, and Double Gee2x. Every flyer links to its unchanged original. The reference's public animation source was inspected to reproduce its intro, hero reveal, navigation movement, 45-second symbol loops, 8.5-second gallery autoplay, 30-second text loops, and scroll reveals. Visual comparison in a graphical browser remains pending because browser access was unavailable in this session.
 
 ## What's included
 
@@ -10,7 +10,7 @@ A responsive, component-based Capital Fest frontend, reconstructed from the **pu
 - Motion for React scroll reveals with reduced-motion support; CSS intro, navigation and ticker animations
 - Concert hero with supplied MP4 playing automatically, muted and looping, with photographic fallback and official logo; no video controls are displayed
 - Two animated geometric symbol strips
-- Large event announcement and a **temporary, clearly non-official flyer composition**
+- Large event announcement with the official Mayorkun flyer and three supporting artist flyers, displayed without cropping or overlays
 - Ticket entry CTA and keyboard-dismissable drawer, with link support once the actual ticket URL is known
 - Mobile menu, anchors and sticky navigation
 - Horizontal gallery with 30 optimized festival photos, arrows, keyboard scrolling, 8.5-second autoplay and play/pause; pauses on hover, focus, hidden tabs and offscreen
@@ -71,7 +71,7 @@ Edit `lib/site-config.ts` to replace launch placeholders:
 |---|---|---|
 | `officialLogo` | Supplied | Exact PNG used for all brand lockups |
 | `heroVideo` | Supplied | Automatic muted hero MP4; photographic fallback |
-| `officialFlyer` | Yes | The event poster section |
+| `officialFlyer` | Supplied | The Mayorkun headline poster; supporting artist metadata lives in `lib/flyers.ts` |
 | `eventDate`, `eventVenue` | If the festival is announced | Add approved text wherever needed |
 | `ticketUrl` | If ticketing is live | The ticket drawer CTA |
 | `instagramUrl`, `youtubeUrl` | Supplied | Footer links to the official accounts |
@@ -153,4 +153,4 @@ preview/                   Standalone UI design demo
 
 ## Original reference vs reconstruction
 
-Verified content order from the public site: **hero video/overlay → two decorative symbol bands → event heading and flyer → ticket announcement → photo highlights → repeated 'WHERE IT ALL BEGAN' text → large featured photo → signup form → decorative footer/footer links**. The current replica preserves that visual narrative with Capital Fest branding and provided images. Animation timings were verified against the reference’s public JavaScript. A side-by-side rendered comparison is still pending.
+Current content order: **hero video/overlay → two decorative symbol bands → event heading and flyer → ticket announcement → repeated 'WHERE IT ALL BEGAN' text → photo highlights → large featured photo → signup form → decorative footer/footer links**. The marquee now introduces the past-event photos. Animation timings were verified against the reference’s public JavaScript. A side-by-side rendered comparison is still pending.

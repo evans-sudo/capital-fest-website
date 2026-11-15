@@ -23,8 +23,8 @@ export default function HomePage() {
     <SymbolStrip/>
     <SymbolStrip reverse/>
     <EventAnnouncement onTickets={openTickets}/>
-    <Highlights/>
     <TextMarquee/>
+    <Highlights/>
     <FeaturedPhoto/>
     <Newsletter/>
     <Footer onTickets={openTickets}/>

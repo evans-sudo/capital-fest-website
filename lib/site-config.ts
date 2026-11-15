@@ -6,7 +6,7 @@ export const siteConfig = {
   brandShort: 'CAPITAL FEST',
   eventLabel: 'THE NEXT EDITION',
   eventDate: null as string | null,
-  eventVenue: null as string | null,
+  eventVenue: 'Balmoral Convention Center, Sheraton Ikeja' as string | null,
   ticketUrl: null as string | null,
   instagramUrl: 'https://www.instagram.com/capitalfest__/' as string | null,
   xUrl: null as string | null,

@@ -18,8 +18,8 @@ export default function HomePage() {
   const openTickets = () => setTicketsOpen(true);
   return <main>
     <PageIntro/>
-    <SiteHeader onTickets={openTickets}/>
-    <Hero onTickets={openTickets}/>
+    <SiteHeader/>
+    <Hero/>
     <SymbolStrip/>
     <SymbolStrip reverse/>
     <EventAnnouncement onTickets={openTickets}/>
@@ -27,7 +27,7 @@ export default function HomePage() {
     <Highlights/>
     <FeaturedPhoto/>
     <Newsletter/>
-    <Footer onTickets={openTickets}/>
+    <Footer/>
     <TicketPanel isOpen={ticketsOpen} onClose={() => setTicketsOpen(false)}/>
   </main>;
 }

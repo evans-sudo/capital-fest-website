@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { ArrowDown, ArrowUpRight } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 import { heroPhoto } from '@/lib/photos';
 import { siteConfig } from '@/lib/site-config';
 import { BrandMark } from './BrandMark';
 
-export function Hero({ onTickets }: { onTickets: () => void }) {
+export function Hero() {
   const background = useRef<HTMLVideoElement>(null);
   const hero = useRef<HTMLElement>(null);
   const [failed, setFailed] = useState(false);
@@ -43,7 +43,7 @@ export function Hero({ onTickets }: { onTickets: () => void }) {
         <div className="hero__center"><span className="hero__topline">THE SOUND OF A GENERATION</span><h1 className="hero__title"><BrandMark className="hero__brand"/></h1><span className="hero__brush">MORE THAN A FESTIVAL.</span></div>
         <div className="hero__bottom">
           <div className="hero__bottomcopy"><span className="eyebrow">THE MUSIC. THE CULTURE. THE PEOPLE.</span><p>Where every beat becomes a memory.</p></div>
-          <button type="button" className="hero__ticket" onClick={onTickets}>TICKET INFO <ArrowUpRight size={17}/></button>
+          <p className="hero__venue"><span className="eyebrow">THE VENUE</span><span>{siteConfig.eventVenue}</span></p>
           <a className="hero__scroll" href="#experience" aria-label="Scroll to discover Capital Fest"><span>SCROLL TO EXPLORE</span><span className="hero__scroll-circle"><ArrowDown size={20}/></span></a>
         </div>
       </div>

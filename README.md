@@ -11,7 +11,7 @@ A responsive, component-based Capital Fest frontend, reconstructed from the **pu
 - Concert hero with supplied MP4 playing automatically, muted and looping, with photographic fallback and official logo; no video controls are displayed
 - Two animated geometric symbol strips
 - Large event announcement with the official Mayorkun flyer and three supporting artist flyers, displayed without cropping or overlays
-- Ticket entry CTA and keyboard-dismissable drawer, with link support once the actual ticket URL is known
+- Ticket CTA below all artist flyers and keyboard-dismissable drawer, with link support once the actual ticket URL is known; menu and footer links scroll to this section, and the hero shows the supplied venue
 - Mobile menu, anchors and sticky navigation
 - Horizontal gallery with 30 optimized festival photos, arrows, keyboard scrolling, 8.5-second autoplay and play/pause; pauses on hover, focus, hidden tabs and offscreen
 - Dual-direction 'WHERE IT ALL BEGAN' marquees
@@ -72,7 +72,8 @@ Edit `lib/site-config.ts` to replace launch placeholders:
 | `officialLogo` | Supplied | Exact PNG used for all brand lockups |
 | `heroVideo` | Supplied | Automatic muted hero MP4; photographic fallback |
 | `officialFlyer` | Supplied | The Mayorkun headline poster; supporting artist metadata lives in `lib/flyers.ts` |
-| `eventDate`, `eventVenue` | If the festival is announced | Add approved text wherever needed |
+| `eventVenue` | Supplied | Balmoral Convention Center, Sheraton Ikeja, shown in the hero |
+| `eventDate` | Awaiting confirmation | Add the approved event date |
 | `ticketUrl` | If ticketing is live | The ticket drawer CTA |
 | `instagramUrl`, `youtubeUrl` | Supplied | Footer links to the official accounts |
 | `tiktokUrl`, `xUrl`, `facebookUrl`, `email` | Awaiting account URLs | Optional social links (hidden until configured) and contact |

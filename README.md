@@ -97,14 +97,14 @@ The sample event copy is creative placeholder marketing text. No date, venue, pe
 
 ## FrontDesk event data
 
-The ticket panel reads the published `capitalfest` event and its live ticket tiers directly from the FrontDesk Storefront API. Add the browser-safe publishable key and the server-only secret key to `.env.local` for local development. Configure both in the deployment environment as well:
+The ticket panel reads the published `capitalfest` event and its live ticket tiers through the site's `/api/tickets/event` route. The server calls the FrontDesk Storefront API so in-app browsers do not need to make a cross-origin request. Add the publishable key and the server-only secret key to `.env.local` for local development. Configure both in the deployment environment as well:
 
 ```bash
 NEXT_PUBLIC_FRONTDESK_PUBLISHABLE_KEY=fd_pk_live_...
 FRONTDESK_SECRET_KEY=fd_sk_live_...
 ```
 
-Register the deployed site's exact origin on the publishable key in FrontDesk (and `http://localhost:3000` for local testing). The server route opens FrontDesk's hosted checkout with the secret key; the buyer completes payment on FrontDesk. The return page deliberately does not claim payment succeeded because a redirect alone is not proof of payment. Confirm a purchase through FrontDesk's order status, email or a verified webhook. Use test keys for sandbox payment tests before live launch.
+The checkout server route opens FrontDesk's hosted checkout with the secret key; the buyer completes payment on FrontDesk. The return page deliberately does not claim payment succeeded because a redirect alone is not proof of payment. Confirm a purchase through FrontDesk's order status, email or a verified webhook. Use test keys for sandbox payment tests before live launch.
 
 The keys are not committed to GitHub. `.env.local` is ignored by Git; `.env.example` only lists variable names. For a Cloudflare Workers build connected to GitHub, set `NEXT_PUBLIC_FRONTDESK_PUBLISHABLE_KEY` as a **build environment variable**, then set `FRONTDESK_SECRET_KEY` as a **Worker secret** for the deployed Worker. The publishable key must be present when Next.js builds; the secret key must be present when the checkout route runs. Rebuild and redeploy after changing the publishable key.
 

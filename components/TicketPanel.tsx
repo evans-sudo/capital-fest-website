@@ -2,7 +2,13 @@
 
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { ArrowUpRight, X } from 'lucide-react';
-import { FrontDeskEvent, getCapitalFestEvent } from '@/lib/frontdesk';
+import type { FrontDeskEvent } from '@/lib/frontdesk';
+
+async function loadTickets(signal: AbortSignal): Promise<FrontDeskEvent> {
+  const response = await fetch('/api/tickets/event', { signal, cache: 'no-store' });
+  if (!response.ok) throw new Error('Ticket details are temporarily unavailable. Please try again.');
+  return response.json() as Promise<FrontDeskEvent>;
+}
 
 export function TicketPanel({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const closeBtn = useRef<HTMLButtonElement>(null);
@@ -37,7 +43,7 @@ export function TicketPanel({ isOpen, onClose }: { isOpen: boolean; onClose: () 
     if (!isOpen) return;
     const controller = new AbortController();
     setError('');
-    getCapitalFestEvent(controller.signal).then(data => { setEvent(data); setTierRef(current => current || data.ticketTypes.find(tier => !tier.soldOut)?.ref || ''); }).catch((cause: unknown) => {
+    loadTickets(controller.signal).then(data => { setEvent(data); setTierRef(current => current || data.ticketTypes.find(tier => !tier.soldOut)?.ref || ''); }).catch((cause: unknown) => {
       if (!controller.signal.aborted) setError(cause instanceof Error ? cause.message : 'Ticket details are temporarily unavailable.');
     });
     const old = document.body.style.overflow;

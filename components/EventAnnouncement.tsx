@@ -50,6 +50,6 @@ export function EventAnnouncement({ onTickets }: { onTickets: () => void }) {
       </div>
     </section>
     <div className="announcement__closing"><span>BIG ENERGY. REAL CONNECTION.</span><span>CREATED FOR THE CULTURE.</span></div>
-    <div className="ticket-cta" id="tickets"><div><p className="eyebrow dark">DON'T MISS THE NEXT WAVE</p><h3>TICKETS<span>!</span></h3><p>Good times are better when you're there.</p></div><motion.button data-scroll-reveal type="button" onClick={onTickets} className="ticket-cta__button" initial={reduceMotion ? false : { opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, margin: '0px 0px -20% 0px' }} transition={{ duration: reduceMotion ? 0 : 0.5, ease: [0.34, 1.56, 0.64, 1] }}>TICKET UPDATES <ArrowUpRight size={21}/></motion.button></div>
+    <div className="ticket-cta" id="tickets"><div><p className="eyebrow dark">DON'T MISS THE NEXT WAVE</p><h3>TICKETS<span>!</span></h3><p>Good times are better when you're there.</p></div><motion.button data-scroll-reveal type="button" onClick={onTickets} className="ticket-cta__button" initial={reduceMotion ? false : { opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true, margin: '0px 0px -20% 0px' }} transition={{ duration: reduceMotion ? 0 : 0.5, ease: [0.34, 1.56, 0.64, 1] }}>GET TICKET <ArrowUpRight size={21}/></motion.button></div>
   </section>;
 }
